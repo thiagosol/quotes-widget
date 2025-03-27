@@ -10,6 +10,7 @@ COPY nginx.conf /etc/nginx/conf.d/
 COPY index.html /usr/share/nginx/html/
 COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
+COPY manifest.json /usr/share/nginx/html/
 
 # Expõe a porta 80
 EXPOSE 80 

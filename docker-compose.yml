@@ -6,8 +6,6 @@ services:
     pull_policy: never
     restart: always
     container_name: quotes-widget
-    ports:
-      - "9091:80"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotes-widget.entrypoints=http"
