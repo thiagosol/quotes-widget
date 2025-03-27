@@ -1,0 +1,367 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background-color: #f8fafc;
+    --card-background: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.converter-card {
+    background: var(--card-background);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.amount-input,
+.currency-select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+input,
+select,
+.select2-container--default .select2-selection--single {
+    height: 40px !important;
+    padding: 0 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background-color: var(--card-background);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.amount-input {
+    position: relative;
+}
+
+.amount-input input {
+    padding-left: 2.5rem;
+}
+
+.amount-input::before {
+    content: "R$";
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+/* Estilos do Select2 */
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--text-primary);
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+    width: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: var(--text-secondary) transparent transparent transparent;
+    border-width: 5px 4px 0 4px;
+    margin-left: -6px;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent var(--text-secondary) transparent;
+    border-width: 0 4px 5px 4px;
+}
+
+.currency-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.currency-option strong {
+    font-size: 0.875rem;
+    color: var(--primary-color);
+    min-width: 45px;
+}
+
+.currency-option .currency-name {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered .currency-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .converter-card {
+        padding: 1rem;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .amount-input,
+    .currency-select {
+        gap: 0.25rem;
+    }
+
+    .swap-button {
+        transform: rotate(90deg);
+        margin: 0.25rem auto;
+        padding: 0.25rem;
+    }
+
+    .result-card {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+
+    .result-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .fee-info {
+        gap: 0.5rem;
+    }
+}
+
+.swap-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    align-self: flex-end;
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.swap-button:hover {
+    color: var(--primary-color);
+}
+
+.convert-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.convert-button:hover {
+    background-color: var(--primary-hover);
+}
+
+.result-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    display: none;
+}
+
+.result-card.visible {
+    display: block;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.result-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.rate-info {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.amount-display {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--success-color);
+}
+
+.fee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fee-item {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+}
+
+.fee-item.total {
+    font-weight: 500;
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Remove as setas do input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Dropdown do Select2 */
+.select2-dropdown {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px -3px rgb(0 0 0 / 0.1);
+    background-color: var(--card-background);
+    margin-top: 4px;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.select2-results__option {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+input:focus,
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--open .select2-selection--single {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+} 

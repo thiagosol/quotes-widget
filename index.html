@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Conversor de Moedas</h1>
+            <p>Converta valores entre diferentes moedas em tempo real</p>
+        </header>
+
+        <main>
+            <div class="converter-card">
+                <div class="input-group">
+                    <div class="amount-input">
+                        <label for="amount">Valor</label>
+                        <input type="number" id="amount" placeholder="0,00" step="0.01" min="0">
+                    </div>
+                    <div class="currency-select">
+                        <label for="fromCurrency">De</label>
+                        <select id="fromCurrency" class="currency-select2">
+                            <option value="BRL">BRL - Real Brasileiro</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="USD">USD - Dólar Americano</option>
+                            <option value="GBP">GBP - Libra Esterlina</option>
+                            <option value="JPY">JPY - Iene Japonês</option>
+                            <option value="CHF">CHF - Franco Suíço</option>
+                            <option value="CAD">CAD - Dólar Canadense</option>
+                            <option value="AUD">AUD - Dólar Australiano</option>
+                            <option value="CNY">CNY - Yuan Chinês</option>
+                            <option value="INR">INR - Rúpia Indiana</option>
+                            <option value="NZD">NZD - Dólar Neozelandês</option>
+                            <option value="SGD">SGD - Dólar de Cingapura</option>
+                            <option value="HKD">HKD - Dólar de Hong Kong</option>
+                            <option value="KRW">KRW - Won Sul-Coreano</option>
+                            <option value="TRY">TRY - Lira Turca</option>
+                            <option value="RUB">RUB - Rublo Russo</option>
+                            <option value="MXN">MXN - Peso Mexicano</option>
+                            <option value="ZAR">ZAR - Rand Sul-Africano</option>
+                        </select>
+                    </div>
+                    <button id="swapButton" class="swap-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                        </svg>
+                    </button>
+                    <div class="currency-select">
+                        <label for="toCurrency">Para</label>
+                        <select id="toCurrency" class="currency-select2">
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="BRL">BRL - Real Brasileiro</option>
+                            <option value="USD">USD - Dólar Americano</option>
+                            <option value="GBP">GBP - Libra Esterlina</option>
+                            <option value="JPY">JPY - Iene Japonês</option>
+                            <option value="CHF">CHF - Franco Suíço</option>
+                            <option value="CAD">CAD - Dólar Canadense</option>
+                            <option value="AUD">AUD - Dólar Australiano</option>
+                            <option value="CNY">CNY - Yuan Chinês</option>
+                            <option value="INR">INR - Rúpia Indiana</option>
+                            <option value="NZD">NZD - Dólar Neozelandês</option>
+                            <option value="SGD">SGD - Dólar de Cingapura</option>
+                            <option value="HKD">HKD - Dólar de Hong Kong</option>
+                            <option value="KRW">KRW - Won Sul-Coreano</option>
+                            <option value="TRY">TRY - Lira Turca</option>
+                            <option value="RUB">RUB - Rublo Russo</option>
+                            <option value="MXN">MXN - Peso Mexicano</option>
+                            <option value="ZAR">ZAR - Rand Sul-Africano</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="convertButton" class="convert-button">
+                    Converter
+                </button>
+
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">
+                        <h2>Resultado da Conversão</h2>
+                        <div class="rate-info">
+                            <span>Taxa de câmbio:</span>
+                            <span id="exchangeRate">-</span>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        <div class="amount-display">
+                            <span id="resultAmount">-</span>
+                            <span id="resultCurrency">-</span>
+                        </div>
+                        <div class="fee-info">
+                            <div class="fee-item">
+                                <span>Taxa de serviço:</span>
+                                <span id="serviceFee">-</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>IOF:</span>
+                                <span id="iofFee">-</span>
+                            </div>
+                            <div class="fee-item total">
+                                <span>Total:</span>
+                                <span id="totalFee">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Dados fornecidos pela Exchange Rates API</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
