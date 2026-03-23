@@ -1,0 +1,25 @@
+when:
+  branch: [main, dev]
+  event: push
+
+steps:
+  - name: prepare
+    image: registry.tmsol.app/deploy-kit:latest
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
+    commands:
+      - deploy-kit prepare
+
+  - name: build-image
+    image: gcr.io/kaniko-project/executor:v1.23.2-debug
+    commands:
+      - sh ./deploy-kit/run.sh build
+
+  - name: deploy
+    image: registry.tmsol.app/deploy-kit:latest
+    backend_options:
+      kubernetes:
+        serviceAccountName: woodpecker-pipeline
+    commands:
+      - deploy-kit deploy

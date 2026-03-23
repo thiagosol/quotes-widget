@@ -1,0 +1,15 @@
+name: quotes-widget
+
+# Static nginx (Dockerfile EXPOSE 80)
+port: 80
+
+# GET / → index.html (nginx)
+healthPath: /
+
+resources:
+  limits:
+    memory: 64Mi
+    cpu: 200m
+  requests:
+    memory: 32Mi
+    cpu: 25m
